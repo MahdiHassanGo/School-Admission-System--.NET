@@ -1,6 +1,8 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
+using SchoolAdmission.Api.Features.Classes;
+using SchoolAdmission.Api.Features.Holds;
 using SchoolAdmission.Api.Infrastructure;
 using SchoolAdmission.Api.Middleware;
 
@@ -12,6 +14,11 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString));
+
+// Add Application Services
+builder.Services.AddScoped<IClassService, ClassService>();
+builder.Services.AddScoped<IHoldService, HoldService>();
+builder.Services.AddHostedService<ExpiredHoldWorker>();
 
 // Add Controllers with camelCase JSON serializer
 builder.Services.AddControllers()
