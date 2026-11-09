@@ -47,3 +47,6 @@ All timestamps (`created_at`, `expires_at`, `confirmed_at`, `cancelled_at`) are 
 
 ## 12. Data Persistence
 PostgreSQL runs with a named Docker volume (`postgres_data`) so that `docker compose down` followed by `docker compose up` preserves all classes, holds, and confirmed admissions.
+
+## 13. Multi-Instance Concurrency
+Because serialization occurs inside PostgreSQL row locks rather than in-memory process locks, multiple API instances (tested with two instances on separate ports sharing the same PostgreSQL database) coordinate allocation without overbooking or race conditions.
