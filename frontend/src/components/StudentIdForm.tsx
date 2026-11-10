@@ -79,6 +79,8 @@ export const StudentIdForm: React.FC<Props> = ({ currentStudentId, onStudentIdCh
               padding: '10px 14px',
               borderRadius: '6px',
               border: `1px solid ${error ? '#d93025' : '#dadce0'}`,
+              backgroundColor: '#ffffff',
+              color: '#202124',
               fontSize: '15px',
               fontFamily: 'monospace'
             }}

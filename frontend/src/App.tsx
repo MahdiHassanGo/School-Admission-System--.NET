@@ -322,10 +322,12 @@ export function App() {
                 onClick={() => fetchClasses()}
                 style={{
                   background: '#ffffff',
+                  color: '#3c4043',
                   border: '1px solid #dadce0',
                   padding: '6px 12px',
                   borderRadius: '6px',
                   fontSize: '12px',
+                  fontWeight: 500,
                   cursor: 'pointer'
                 }}
               >
@@ -372,10 +374,12 @@ export function App() {
                   onClick={() => fetchMyHolds(studentId)}
                   style={{
                     background: '#ffffff',
+                    color: '#3c4043',
                     border: '1px solid #dadce0',
                     padding: '6px 12px',
                     borderRadius: '6px',
                     fontSize: '12px',
+                    fontWeight: 500,
                     cursor: 'pointer'
                   }}
                 >

@@ -78,6 +78,8 @@ export const CreateClassForm: React.FC<Props> = ({ isCreating, onCreateClass }) 
                 padding: '9px 12px',
                 borderRadius: '6px',
                 border: '1px solid #dadce0',
+                backgroundColor: '#ffffff',
+                color: '#202124',
                 fontSize: '14px',
                 boxSizing: 'border-box'
               }}
@@ -102,6 +104,8 @@ export const CreateClassForm: React.FC<Props> = ({ isCreating, onCreateClass }) 
                 padding: '9px 12px',
                 borderRadius: '6px',
                 border: '1px solid #dadce0',
+                backgroundColor: '#ffffff',
+                color: '#202124',
                 fontSize: '14px',
                 boxSizing: 'border-box'
               }}
