@@ -131,6 +131,21 @@ dotnet test backend/tests/SchoolAdmission.Api.Tests/SchoolAdmission.Api.Tests.cs
 - **B9**: Hosted `ExpiredHoldWorker` periodically sweeps overdue holds and updates database to `EXPIRED`.
 - **Mandatory Concurrency Test**: Fires 40 simultaneous parallel HTTP requests against a 5-seat class. Exactly 5 requests succeed (`201`), 35 are rejected with `409`, and total occupancy never exceeds capacity.
 
+### Frontend Automated Test Suite
+Vitest and React Testing Library cover the key user workflows, loading states, countdown timers, and error presentations.
+
+To run the frontend test suite:
+```bash
+docker run --rm -v "$(pwd)/frontend:/app" -v /app/node_modules -w /app node:20-alpine sh -c "npm i --prefer-offline && npx vitest run"
+```
+
+**Covered Frontend Scenarios (5/5 Passed):**
+1. **Class Listing**: Renders classes and live availability numbers from the backend API.
+2. **Hold Reservation Workflow**: Valid student submits application, shows `HELD` status card, live countdown, and simulated payment button.
+3. **Expired Hold State**: Verifies payment/confirm action is disabled when a hold has expired.
+4. **Error Handling**: Formats backend `409 Conflict` Problem Details into user-friendly notifications.
+5. **Session Rehydration**: Restores 17-digit student identifier from `localStorage` upon reload and automatically queries `/me/holds`.
+
 ---
 
 ## 6. End-to-End Walkthrough Demo
