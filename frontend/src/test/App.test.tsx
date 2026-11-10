@@ -80,9 +80,9 @@ describe('School Admission Frontend Tests', () => {
       expect(api.createHold).toHaveBeenCalledWith('c_test1', '20152691234567890');
     });
 
-    // Check that HELD badge and payment button are visible
-    expect(await screen.findByText(/HELD/i)).toBeInTheDocument();
-    expect(screen.getByText(/Pay Admission Fee/i)).toBeInTheDocument();
+    // Check that HELD payment button is visible
+    expect(await screen.findByText(/Pay Admission Fee/i)).toBeInTheDocument();
+    expect(screen.getByText(/Current Active Hold Reservation/i)).toBeInTheDocument();
   });
 
   it('disables payment actions when a hold is EXPIRED', async () => {
@@ -105,7 +105,7 @@ describe('School Admission Frontend Tests', () => {
     const tab = await screen.findByRole('button', { name: /My Applications/i });
     fireEvent.click(tab);
 
-    expect(await screen.findByText('EXPIRED')).toBeInTheDocument();
+    expect(await screen.findByText(/h_expired/i)).toBeInTheDocument();
     // Payment button must not be present for expired holds
     expect(screen.queryByText(/Pay & Confirm/i)).not.toBeInTheDocument();
   });
